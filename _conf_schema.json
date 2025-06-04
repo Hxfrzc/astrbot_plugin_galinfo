@@ -1,0 +1,28 @@
+{
+    "similarity":{
+        "description": "百分比相似度",
+        "type": "int",
+        "hint": "搜索时候的百分比相似度，只会定位到相似度比此参数更高的数据；取值范围 50~99，默认80",
+        "default": 80,
+        "min": 50,
+        "max": 99
+    },
+
+    "message_components":{
+        "description": "是否将搜索到的信息以聊天记录转发形式送出",
+        "type": "string",
+        "hint": "由于信息文本可能会过多导致刷屏,故提供此选项，默认为关闭",
+        "default": "关闭",
+        "options": ["开启","关闭"]
+    },
+     
+    "token_refresh":{
+        "description":"刷新获取token的时间间隔（分钟）",
+        "type":"int",
+        "hint":"由于月幕api的token每隔一小时就会过期，故需要定期刷新，默认刷新间隔55分钟",
+        "defalut": 59,
+        "options":["30","45","55"]
+    }
+
+
+}
