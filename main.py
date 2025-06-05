@@ -218,7 +218,7 @@ class galgame(Star):
         self.similarity = self.config.get("similarity", "default")
         self.m_c = self.config.get("message_components", "default")
         self.token_wait = self.config.get("token_refresh","defalut")
-        self.if_fromfilesystem = self.config.get("if_fromfilessystem","defalut")
+        self.if_fromfilesystem = self.config.get("if_fromfilesystem","defalut")
         self.ym = API_ym()
 
         #启动定时刷新token服务
