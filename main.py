@@ -204,7 +204,13 @@ class API_ym():
         return chain
 
 
-@register("astrbot_plugin_galinfo", "Hxfrzc", "一个可以提供查询Galgame信息的插件，基于月幕Gal的api", "1.0.0")
+@register(
+    "astrbot_plugin_galinfo",
+    "Hxfrzc",
+    "一个可以提供查询Galgame信息的插件，基于月幕Gal的api",
+    "1.1",
+    "https://github.com/Hxfrzc/astrbot_plugin_galinfo"
+)
 class galgame(Star):
     def __init__(self, context: Context, config:AstrBotConfig):
         super().__init__(context)
