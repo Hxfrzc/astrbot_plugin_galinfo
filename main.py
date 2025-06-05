@@ -189,7 +189,8 @@ class API_ym():
             parg = (info.get("intro")).split("\n\n")
         pargs = []
         for p in parg:
-            clean_p = f"{'':<7}{re.sub(r'\s+','',p.strip())}"
+            pattern = r"\s+"
+            clean_p = f"{'':<7}{re.sub(pattern,'',p.strip())}"
             pargs.append(clean_p)
         intro = "\n".join(pargs)
 
