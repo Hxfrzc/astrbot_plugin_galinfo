@@ -256,6 +256,7 @@ class galgame(Star):
             if "关闭" in self.if_fromfilesystem:
                 with open(imgpath,"rb") as img:
                     img_p = img.read()
+
                     #判断是否使用消息转发
                 if "开启" in self.m_c:
                     node = Node(
@@ -270,20 +271,18 @@ class galgame(Star):
 
                 else:
                     chain = [
-                        Comp.Image.fromBytes(imgpath),
+                        Comp.Image.fromBytes(img_p),
                         Comp.Plain(f"{chains}")
                     ]
                     yield event.chain_result(chain)
             else:
-                img_p = imgpath
-
                 #判断是否使用消息转发
                 if "开启" in self.m_c:
                     node = Node(
                         uin=3974507586,
                         name="玖玖瑠",
                         content=[
-                            Image.fromBytes(img_p),
+                            Image.fromFileSystem(imgpath),
                             Plain(f"{chains}"),
                         ]
                     )
@@ -291,7 +290,7 @@ class galgame(Star):
 
                 else:
                     chain = [
-                        Comp.Image.fromBytes(imgpath),
+                        Comp.Image.fromFileSystem(imgpath),
                         Comp.Plain(f"{chains}")
                     ]
                     yield event.chain_result(chain)
@@ -364,20 +363,18 @@ class galgame(Star):
 
                     else:
                         chain = [
-                            Comp.Image.fromBytes(imgpath),
+                            Comp.Image.fromBytes(img_p),
                             Comp.Plain(f"{chains}")
                         ]
                         yield event.chain_result(chain)
                 else:
-                    img_p = imgpath
-
                     #判断是否使用消息转发
                     if "开启" in self.m_c:
                         node = Node(
                             uin=3974507586,
                             name="玖玖瑠",
                             content=[
-                                Image.fromBytes(img_p),
+                                Image.fromFileSystem(imgpath),
                                 Plain(f"{chains}"),
                             ]
                         )
@@ -385,7 +382,7 @@ class galgame(Star):
 
                     else:
                         chain = [
-                            Comp.Image.fromBytes(imgpath),
+                            Comp.Image.fromFileSystem(imgpath),
                             Comp.Plain(f"{chains}")
                         ]
                         yield event.chain_result(chain)
