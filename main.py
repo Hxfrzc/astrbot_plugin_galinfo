@@ -212,6 +212,7 @@ class galgame(Star):
         self.similarity = self.config.get("similarity", "default")
         self.m_c = self.config.get("message_components", "default")
         self.token_wait = self.config.get("token_refresh","defalut")
+        self.if_fromfilesystem = self.config.get("if_fromfilessystem","defalut")
         self.ym = API_ym()
 
         #启动定时刷新token服务
@@ -252,24 +253,48 @@ class galgame(Star):
                 TEMP_DIR,
             )
 
-            #判断是否使用消息转发
-            if "开启" in self.m_c:
-                node = Node(
-                    uin=3974507586,
-                    name="玖玖瑠",
-                    content=[
-                        Image.fromFileSystem(imgpath),
-                        Plain(f"{chains}"),
-                    ]
-                )
-                yield event.chain_result([node])
+            if "关闭" in self.if_fromfilesystem:
+                with open(imgpath,"rb") as img:
+                    img_p = img.read()
+                    #判断是否使用消息转发
+                if "开启" in self.m_c:
+                    node = Node(
+                        uin=3974507586,
+                        name="玖玖瑠",
+                        content=[
+                            Image.fromBytes(img_p),
+                            Plain(f"{chains}"),
+                        ]
+                    )
+                    yield event.chain_result([node])
 
+                else:
+                    chain = [
+                        Comp.Image.fromBytes(imgpath),
+                        Comp.Plain(f"{chains}")
+                    ]
+                    yield event.chain_result(chain)
             else:
-                chain = [
-                    Comp.Image.fromFileSystem(imgpath),
-                    Comp.Plain(f"{chains}")
-                ]
-                yield event.chain_result(chain)
+                img_p = imgpath
+
+                #判断是否使用消息转发
+                if "开启" in self.m_c:
+                    node = Node(
+                        uin=3974507586,
+                        name="玖玖瑠",
+                        content=[
+                            Image.fromBytes(img_p),
+                            Plain(f"{chains}"),
+                        ]
+                    )
+                    yield event.chain_result([node])
+
+                else:
+                    chain = [
+                        Comp.Image.fromBytes(imgpath),
+                        Comp.Plain(f"{chains}")
+                    ]
+                    yield event.chain_result(chain)
 
             #清理缓存图片
             if os.path.exists(imgpath):
@@ -322,24 +347,48 @@ class galgame(Star):
                     TEMP_DIR,
                 )
 
-                #判断是否使用消息转发
-                if "开启" in self.m_c:
-                    node = Node(
-                        uin=3974507586,
-                        name="玖玖瑠",
-                        content=[
-                            Image.fromFileSystem(imgpath),
-                            Plain(f"{chains}"),
-                        ]
-                    )
-                    yield event.chain_result([node])
+                if "关闭" in self.if_fromfilesystem:
+                    with open(imgpath,"rb") as img:
+                        img_p = img.read()
+                        #判断是否使用消息转发
+                    if "开启" in self.m_c:
+                        node = Node(
+                            uin=3974507586,
+                            name="玖玖瑠",
+                            content=[
+                                Image.fromBytes(img_p),
+                                Plain(f"{chains}"),
+                            ]
+                        )
+                        yield event.chain_result([node])
 
+                    else:
+                        chain = [
+                            Comp.Image.fromBytes(imgpath),
+                            Comp.Plain(f"{chains}")
+                        ]
+                        yield event.chain_result(chain)
                 else:
-                    chain = [
-                        Comp.Image.fromFileSystem(imgpath),
-                        Comp.Plain(f"{chains}")
-                    ]
-                    yield event.chain_result(chain)
+                    img_p = imgpath
+
+                    #判断是否使用消息转发
+                    if "开启" in self.m_c:
+                        node = Node(
+                            uin=3974507586,
+                            name="玖玖瑠",
+                            content=[
+                                Image.fromBytes(img_p),
+                                Plain(f"{chains}"),
+                            ]
+                        )
+                        yield event.chain_result([node])
+
+                    else:
+                        chain = [
+                            Comp.Image.fromBytes(imgpath),
+                            Comp.Plain(f"{chains}")
+                        ]
+                        yield event.chain_result(chain)
 
                 #清理缓存图片
                 if os.path.exists(imgpath):
