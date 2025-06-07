@@ -208,7 +208,7 @@ class API_ym():
     "astrbot_plugin_galinfo",
     "Hxfrzc",
     "一个可以提供查询Galgame信息的插件，基于月幕Gal的api",
-    "1.1",
+    "1.2",
     "https://github.com/Hxfrzc/astrbot_plugin_galinfo"
 )
 class galgame(Star):
