@@ -221,10 +221,11 @@ class galgame(Star):
         self.if_fromfilesystem = self.config.get("if_fromfilesystem","defalut")
         self.ym = API_ym()
 
+        '''
         #启动定时刷新token服务
         self.token_refresh_task = asyncio.create_task(self.token_refresh())
         logger.info(f"已启动定时刷新token，刷新间隔{self.token_wait}分钟")
-
+        '''
 
     @filter.command("查询gal")
     async def search_galgame(self, event: AstrMessageEvent):
@@ -235,7 +236,7 @@ class galgame(Star):
             return
 
         keyword = cmd[1]
-        token = self.token
+        token = await self.ym.gettoken()
         yield event.plain_result(f"正在搜索：{keyword}")
         try:
             header = await self.ym.header(token)
@@ -323,7 +324,7 @@ class galgame(Star):
             return
 
         keyword = cmd[1]
-        token = self.token
+        token = await self.ym.gettoken()
         yield event.plain_result(f"正在模糊搜索：{keyword}")
 
         try:
@@ -411,6 +412,7 @@ class galgame(Star):
         except Exception as e:
             logger.error(f"{type(e).__name__}:{e}")
 
+    '''
     async def token_refresh(self):
         """每隔一小时刷新一次token防止过期"""
         self.token = await self.ym.gettoken() #立刻获取一次token
@@ -430,6 +432,7 @@ class galgame(Star):
 
             except Exception as e:
                 logger.error(f"刷新token循环出错，{type(e).__name__}:{e}")
+    
 
     async def terminate(self):
         """插件被卸载时的任务清理函数清理"""
@@ -441,4 +444,8 @@ class galgame(Star):
                 logger.info("自动刷新token已成功取消")
             except Exception as e:
                 logger.error(f"自动刷新token取消失败，错误：{e}")
+        pass
+        
+    '''
+    async def terminate(self):
         pass
