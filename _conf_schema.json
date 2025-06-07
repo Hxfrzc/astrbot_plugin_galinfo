@@ -21,7 +21,8 @@
         "type":"int",
         "hint":"由于月幕api的token每隔一小时就会过期，故需要定期刷新，默认刷新间隔55分钟",
         "defalut": 55,
-        "options":["30","45","55"]
+        "options":["30","45","55"],
+        "invisible": "True"
     },
 
     "if_fromfilesystem":{
@@ -29,8 +30,7 @@
         "type": "string",
         "hint": "建议关闭;尤其是使用docker部署并且没有作路径映射的必须关闭，要不然图片会发送不出去",
         "defalut": "关闭",
-        "options": ["关闭","开启"],
-        "invisible": "True"
+        "options": ["关闭","开启"]
     }
 
 }
