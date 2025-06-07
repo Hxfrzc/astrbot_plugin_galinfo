@@ -1,5 +1,5 @@
 name: astrbot_plugins_galinfo # 这是你的插件的唯一识别名。
 desc: 一个可以提供查询Galgame信息的插件，基于月幕Gal的api # 插件简短描述
-version: 1.1 # 插件版本号。格式：v1.1.1 或者 v1.1
+version: v1.2 # 插件版本号。格式：v1.1.1 或者 v1.1
 author: Hxfrzc # 作者
 repo: https://github.com/Hxfrzc/astrbot_plugin_galinfo # 插件的仓库地址
